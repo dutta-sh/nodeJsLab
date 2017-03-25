@@ -1,0 +1,101 @@
+body {
+    background: #FEFEFE;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 15pt;
+}
+
+header {
+    border-bottom: 1px solid #AFAFAF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: brown;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.15rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+@media (min-width:501px) {
+    #navig {
+        width: 25%;
+        float: left;
+    }
+    #contn {
+        width: 50%;
+        float: left;
+    }
+}
+
+.flex-container {
+  max-width: 800px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex-item {
+        background: lightseagreen;
+        margin-top: 10px;
+        font-size: 1em;
+        text-align: left;
+    }
+
+@media (max-width: 500px) {
+    .flex-item {
+        flex-basis: 100%;
+    }
+    img {
+        max-width:100%;
+        height: 200px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+    .flex-item {
+        flex-basis: 50%;
+    }
+    img {
+        max-width:100%;
+        height: 125px;
+    }
+}
+
+@media (min-width: 801px) {
+    .flex-item {
+        flex-basis: 33%;
+    }
+    img {
+        max-width:100%;
+        height: 200px;
+    }
+}

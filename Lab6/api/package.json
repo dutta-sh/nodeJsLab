@@ -1,0 +1,16 @@
+{
+  "name": "lab6-server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paromita Datta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "node-redis-pubsub": "^1.0.2",
+    "node-uuid": "^1.4.7"
+  }
+}

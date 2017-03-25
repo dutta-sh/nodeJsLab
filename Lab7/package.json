@@ -1,0 +1,18 @@
+{
+  "name": "lab7",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"node api/app.js\" \"node worker/worker.js\""
+  },
+  "author": "Paromita Datta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "node-redis-pubsub": "^1.0.2",
+    "node-uuid": "^1.4.7",
+    "socket.io": "1.2.0",
+    "request": "^2.81.0",
+    "concurrently": "^3.2.0"
+  }
+}

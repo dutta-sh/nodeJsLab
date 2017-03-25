@@ -1,0 +1,13 @@
+{
+  "name": "lab6-worker",
+  "version": "1.0.0",  
+  "scripts": {
+    "start": "node worker.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paromita Datta",
+  "license": "ISC",  
+  "dependencies": {
+    "node-redis-pubsub": "^1.0.2"
+  }
+}
