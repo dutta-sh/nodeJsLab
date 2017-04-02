@@ -1,0 +1,25 @@
+{
+  "name": "lab9",
+  "version": "1.0.0",
+  "scripts": {        
+    "start": "concurrently \"node api/app.js\" \"react-scripts start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "Paromita Datta",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router-dom": "^4.0.0",
+    "bluebird": "^3.4.7",
+    "express": "^4.14.1",
+    "flat": "^2.0.1",
+    "concurrently": "^3.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  }
+}
