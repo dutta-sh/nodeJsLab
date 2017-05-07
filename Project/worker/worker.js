@@ -6,6 +6,8 @@ const rdf = require('rdflib');
 const store = rdf.graph();
 const booksDB = require("../data/books");
 const dbConnection = require("../data/mongoConnection");
+const redis = require('redis');
+const client = redis.createClient();
 
 console.log('We have got a worker!!');
 
@@ -34,9 +36,14 @@ async function respond(message, channel, callback) {
 
 books = [];
 function initialize() {
+    client.flushdb( function (err, succeeded) {
+        console.log('flushed redis cache: ' + succeeded);
+    });
+    console.log('downloading zip');
     //download("https://www.gutenberg.org/cache/epub/feeds/rdf-files.tar.zip", { directory: "./downloads/", filename: "rdf-files.tar.zip" }, (err) => {
         //if (err) throw err;
-        //console.log("downloaded zip");        
+        console.log("downloaded zip");
+        console.log('extracting zip'); 
         //fs.createReadStream('./downloads/rdf-files.tar.zip').pipe(unzip.Extract({ path: './downloads/' })).on('close', () => {                    
             processFile();                    
         //});           
@@ -45,9 +52,14 @@ function initialize() {
 }
 
 function processFile() {
+    if (!fs.existsSync('./downloads/extract/')){
+        fs.mkdirSync('./downloads/extract/');
+    }
     fs.createReadStream('./downloads/MY-rdf-files.tar.zip').pipe(unzip.Extract({ path: './downloads/extract/' })).on('close', () => {
-        console.log('extracted');
+        console.log('extracted zip');
+        console.log('parsing extract');
         walkSync('./downloads/extract/');
+        console.log('parsed extract');
         dbConnection().then(
             db => db.dropDatabase()).then(() => {
             booksDB.addBooks(books);
@@ -77,6 +89,7 @@ function getBookDetails(xmlStr, id) {
             book = { _id: "", title: '', url: '' };
             book._id = id;
             book.title = xmlStr.substring(xmlStr.indexOf('<dcterms:title>') + '<dcterms:title>'.length, xmlStr.indexOf('</dcterms:title>'));
+            book.title = book.title.replace('&#13', ' ');
             rdf.parse(xmlStr, store, 'http://www.gutenberg.org', 'application/rdf+xml');
             stms = store.statementsMatching(undefined, undefined, undefined);
             for (var i = 0; i < stms.length; i++) {

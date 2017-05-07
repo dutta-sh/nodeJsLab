@@ -45,6 +45,12 @@ let exportedMethods = {
             }
         })
     },    
+    addBook(book) {
+        return booksDB().then((books) => {            
+            books.insertOne(book);
+            console.log('added to DB: ' + book._id);
+        });        
+    },
     addBooks(bookList) {
         return booksDB().then((books) => {            
             bookList.forEach(book => {
