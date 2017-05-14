@@ -55,6 +55,7 @@ function processFile() {
     if (!fs.existsSync('./downloads/extract/')){
         fs.mkdirSync('./downloads/extract/');
     }
+    
     fs.createReadStream('./downloads/MY-rdf-files.tar.zip').pipe(unzip.Extract({ path: './downloads/extract/' })).on('close', () => {
         console.log('extracted zip');
         console.log('parsing extract');

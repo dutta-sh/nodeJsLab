@@ -16,16 +16,6 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-// app.get("/catalog/:page", (req, res) => {
-//     booksDB.getBooksByPage(req.params.page).then((page) => {        
-//         //page = '<h1> Hello <script>alert(1);</script> there !!</h1>';
-//         //res.send(page);
-//         //res.send(xssFilters.inHTMLData(page));
-//     }, (error) => {
-//         res.status(500).json({ "error": error });
-//     });
-// });
-
 app.get("/catalog/:page", (req, res) => {  
     cacheModule.fetchFromCache(req.params.page).then((pageDetails) => (res.json(pageDetails)), (error) => {
         console.log(error.message);
@@ -68,6 +58,16 @@ async function request(req, res, event) {
         res.json({ error: e });
     }
 }
+
+// app.get("/catalog/:page", (req, res) => {
+//     booksDB.getBooksByPage(req.params.page).then((page) => {        
+//         //page = '<h1> Hello <script>alert(1);</script> there !!</h1>';
+//         //res.send(page);
+//         //res.send(xssFilters.inHTMLData(page));
+//     }, (error) => {
+//         res.status(500).json({ "error": error });
+//     });
+// });
 
 // const https = require('https');
 // const fs = require('fs');

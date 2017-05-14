@@ -7,7 +7,7 @@ import {
 const CurrentList = ({ pageData }) => (
     <div>
         {pageData.error && <h3>Bad request: {pageData.error}</h3>}
-        {!pageData.error && <h5><Link to={`/library`}>Back to Home</Link></h5>}
+        {!pageData.error && Number(pageData.currPage) > 0 && <h5><Link to={`/library`}>Back to Home</Link></h5>}
 
         {!pageData.error && <h3>My Library:</h3>}
         {!pageData.error && pageData.books.map((book, index) => (

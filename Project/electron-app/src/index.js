@@ -8,14 +8,11 @@ import {
 import Catalog from './catalog';
 import Library from './library';
 import Book from './book';
-import logo from './logo.svg';
-import './index.css';
 
 const App = () => (
   <Router>
     <div className="App">
       <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h2>Gutenberg Search SPA</h2>
         <nav>
           <ul>
@@ -38,7 +35,5 @@ const App = () => (
   </Router>
 )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+var main = document.getElementById('main');
+ReactDOM.render(<App />, main);

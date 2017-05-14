@@ -1,4 +1,3 @@
-import './book.css';
 import React, { Component } from 'react';
 import { getBook } from './utils/api';
 import {
