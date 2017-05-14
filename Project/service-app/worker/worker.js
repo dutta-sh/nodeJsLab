@@ -40,14 +40,14 @@ function initialize() {
         console.log('flushed redis cache: ' + succeeded);
     });
     console.log('downloading zip');
-    //download("https://www.gutenberg.org/cache/epub/feeds/rdf-files.tar.zip", { directory: "./downloads/", filename: "rdf-files.tar.zip" }, (err) => {
-        //if (err) throw err;
+    download("https://www.gutenberg.org/cache/epub/feeds/rdf-files.tar.zip", { directory: "./downloads/", filename: "rdf-files.tar.zip" }, (err) => {
+        if (err) throw err;
         console.log("downloaded zip");
         console.log('extracting zip'); 
-        //fs.createReadStream('./downloads/rdf-files.tar.zip').pipe(unzip.Extract({ path: './downloads/' })).on('close', () => {                    
+        fs.createReadStream('./downloads/rdf-files.tar.zip').pipe(unzip.Extract({ path: './downloads/' })).on('close', () => {                    
             processFile();                    
-        //});           
-    //});
+        });           
+    });
     return {status: "initializing"};
 }
 
